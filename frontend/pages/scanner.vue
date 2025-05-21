@@ -11,7 +11,7 @@
     <pre style="background: #f0f0f0; padding: 1em; height: 150px; overflow-y: auto;">{{ logs }}</pre>
   </div>
   <div>
-    <p> {{ latestCode }} </p>
+    <p> vafan {{ latestCode }} </p>
   </div>
 </template>
 
