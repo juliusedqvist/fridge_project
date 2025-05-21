@@ -73,8 +73,7 @@ function startScanner() {
 
   Quagga.onDetected((result) => {
     const code = result.codeResult.code
-    resultText.value = `Scannad kod: ${code}`
-    log(`Kod upptäckt: ${code}`)
+    latestCode = code
   })
 }
 //
