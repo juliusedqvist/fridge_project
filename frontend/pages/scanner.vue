@@ -2,22 +2,26 @@
   <div>
     <button @click="startButton"> {{ show ? "Hide" : "Show" }} </button>
   </div>
+  <div>
+    <ul>
+      <li>Latest scanned code: {{ latestCode }}</li>
+      <li><button>Get product</button></li>
+      <li>{{ product }}</li>
+    </ul>
+  </div>
   <div v-if="show">
-    <h1>Streckkodsscanner</h1>
     <div class="scanner-container" ref="scannerContainer"
       style="width: 80%; max-width: 300px; height: 300px; border: 1px solid #ccc;"></div>
     <p>{{ resultText }}</p>
     <h2>Loggar</h2>
     <pre style="background: #f0f0f0; padding: 1em; height: 150px; overflow-y: auto;">{{ logs }}</pre>
   </div>
-  <div>
-    <p> {{ latestCode }} </p>
-  </div>
 </template>
 
 <script setup>
 import { ref, onMounted, onBeforeUnmount } from 'vue'
 import Quagga from 'quagga'
+import axios from 'axios'
 
 const scannerContainer = ref(null);
 const resultText = ref('Ingen streckkod scannad ännu');
@@ -25,6 +29,7 @@ const logs = ref('');
 
 const show = ref(false);
 const latestCode = ref('');
+const product = ref('');
 
 function startButton() {
   show.value = !show.value;
@@ -71,11 +76,26 @@ function startScanner() {
     log('Scanner startad')
   })
 
-  Quagga.onDetected((result) => {
+  Quagga.onDetected(async (result) => {
     const code = result.codeResult.code
     resultText.value = `Scannad kod: ${code}`
     log(`Kod upptäckt: ${code}`)
     latestCode.value = code
+
+    try {
+      const response = await axios.get(`https://world.openfoodfacts.org/api/v0/product/${code}.json`)
+      const productData = response.data
+
+      if (productData.status === 1) {
+        log(`Produkt hittad: ${productData.product.product_name || 'Namn saknas'}`)
+        // You can update some reactive variable here with product info if you want
+        product.value = productData.product
+      } else {
+        log('Produkt hittades inte')
+      }
+    } catch (error) {
+      log(`Fel vid API-förfrågan: ${error.message}`)
+    }
   })
 }
 //
