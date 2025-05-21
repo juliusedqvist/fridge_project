@@ -21,7 +21,7 @@
 <script setup>
 import { ref, onMounted, onBeforeUnmount } from 'vue'
 import Quagga from '@ericblade/quagga2'
-// import axios from ''
+import axios from 'axios'
 
 const scannerContainer = ref(null);
 const resultText = ref('Ingen streckkod scannad ännu');
@@ -42,6 +42,22 @@ function startButton() {
   } else {
     Quagga.stop();
     log('Scanner stoppad');
+  }
+}
+
+async function findProduct(code) {
+  try {
+    const response = await axios.get(`https://world.openfoodfacts.org/api/v0/product/${code}.json`)
+    const productData = response.data
+
+    if (productData.status === 1) {
+      log(`Produkt hittad: ${productData.product.product_name || 'Namn saknas'}`)
+      product.value = productData.product  // Make sure `product` is a `ref` or `reactive` variable
+    } else {
+      log('Produkt hittades inte')
+    }
+  } catch (error) {
+    log(`Fel vid API-förfrågan: ${error.message}`)
   }
 }
 
