@@ -11,7 +11,7 @@
     <pre style="background: #f0f0f0; padding: 1em; height: 150px; overflow-y: auto;">{{ logs }}</pre>
   </div>
   <div>
-    <p> {{ "test" }} </p>
+    <p> {{ latestCode }} </p>
   </div>
 </template>
 
@@ -24,6 +24,7 @@ const resultText = ref('Ingen streckkod scannad ännu');
 const logs = ref('');
 
 const show = ref(false);
+const latestCode = ref('');
 
 function startButton() {
   show.value = !show.value;
