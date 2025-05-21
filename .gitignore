@@ -1,0 +1,58 @@
+# Node modules
+node_modules/
+
+# Nuxt & build output
+.nuxt/
+dist/
+.build/
+.cache/
+output/
+out/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+
+# Environment
+.env
+.env.*
+*.local
+
+# Security-sensitive files
+*.pem
+*.key
+*.crt
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor/IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*.swn
+*.bak
+*.tmp
+
+# Database dump or test files
+*.sql
+*.sqlite
+*.db
+*.db-journal
+
+# PM2 process files (if you use it for Express)
+pids/
+*.pid
+*.seed
+
+# TypeScript (if applicable)
+*.tsbuildinfo
+
+# Misc
+coverage/
+
