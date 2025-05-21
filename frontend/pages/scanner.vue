@@ -11,7 +11,7 @@
     <pre style="background: #f0f0f0; padding: 1em; height: 150px; overflow-y: auto;">{{ logs }}</pre>
   </div>
   <div>
-    <p> vafan {{ latestCode }} </p>
+    <p> {{ latestCode }} </p>
   </div>
 </template>
 
@@ -73,9 +73,7 @@ function startScanner() {
 
   Quagga.onDetected((result) => {
     const code = result.codeResult.code
-    resultText.value = `Scannad kod: ${code}`
-    log(`Kod upptäckt: ${code}`)
-    latestCode = code
+    latestCode.value = code
   })
 }
 //
