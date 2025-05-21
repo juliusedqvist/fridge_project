@@ -5,7 +5,7 @@
   <div>
     <ul>
       <li>Latest scanned code: {{ latestCode }}</li>
-      <li><button>Get product</button></li>
+      <li><button @click="findProduct(latestCode)">Get product</button></li>
       <li>{{ product }}</li>
     </ul>
   </div>
