@@ -20,7 +20,7 @@
 
 <script setup>
 import { ref, onMounted, onBeforeUnmount } from 'vue'
-import Quagga from 'quagga'
+import Quagga from '@ericblade/quagga2'
 // import axios from ''
 
 const scannerContainer = ref(null);
