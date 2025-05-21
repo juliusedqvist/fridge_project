@@ -21,7 +21,7 @@
 <script setup>
 import { ref, onMounted, onBeforeUnmount } from 'vue'
 import Quagga from 'quagga'
-import axios from ''
+// import axios from ''
 
 const scannerContainer = ref(null);
 const resultText = ref('Ingen streckkod scannad ännu');
