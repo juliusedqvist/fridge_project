@@ -45,6 +45,22 @@ function startButton() {
   }
 }
 
+async function findProduct(code) {
+  try {
+    const response = await axios.get(`https://world.openfoodfacts.org/api/v0/product/${code}.json`)
+    const productData = response.data
+
+    if (productData.status === 1) {
+      log(`Produkt hittad: ${productData.product.product_name || 'Namn saknas'}`)
+      product.value = productData.product  // Make sure `product` is a `ref` or `reactive` variable
+    } else {
+      log('Produkt hittades inte')
+    }
+  } catch (error) {
+    log(`Fel vid API-förfrågan: ${error.message}`)
+  }
+}
+
 function log(msg) {
   logs.value += msg + '\n';
   console.log(msg);
@@ -76,26 +92,11 @@ function startScanner() {
     log('Scanner startad')
   })
 
-  Quagga.onDetected(async (result) => {
+  Quagga.onDetected((result) => {
     const code = result.codeResult.code
     resultText.value = `Scannad kod: ${code}`
     log(`Kod upptäckt: ${code}`)
     latestCode.value = code
-
-    try {
-      const response = await axios.get(`https://world.openfoodfacts.org/api/v0/product/${code}.json`)
-      const productData = response.data
-
-      if (productData.status === 1) {
-        log(`Produkt hittad: ${productData.product.product_name || 'Namn saknas'}`)
-        // You can update some reactive variable here with product info if you want
-        product.value = productData.product
-      } else {
-        log('Produkt hittades inte')
-      }
-    } catch (error) {
-      log(`Fel vid API-förfrågan: ${error.message}`)
-    }
   })
 }
 //
