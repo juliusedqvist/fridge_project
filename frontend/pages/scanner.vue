@@ -1,12 +1,12 @@
 <template>
   <div>
-    <button @click="startButton"> {{ show ? "Hide" : "Show" }} </button>
   </div>
   <div>
-    <ul>
-      <li class="navbar">Latest scanned code: {{ latestCode }}</li>
-      <li class="navbar"><button @click="findProduct(latestCode)">Get product</button></li>
-      <li class="navbar">{{ product }}</li>
+    <ul class="navbar">
+      <li class="nav-element"><button @click="startButton"> {{ show ? "Hide" : "Show" }} </button></li>
+      <li class="nav-element">Latest scanned code: {{ latestCode }}</li>
+      <li class="nav-element"><button @click="findProduct(latestCode)">Get product</button></li>
+      <li class="nav-element">{{ product }}</li>
     </ul>
   </div>
   <div v-if="show">
@@ -120,8 +120,18 @@ div[ref="scannerContainer"] canvas {
 }
 
 .navbar {
-  display: inline-block;
-  width: 200px;
-  background-color: green;
+  display: flex;
+  list-style: none;
+  padding-bottom: 8px;
+  margin: 0;
+  border-bottom: ridge 1px;
+}
+
+.nav-element {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  height: 40px;
+  padding: 0 1rem;
 }
 </style>
