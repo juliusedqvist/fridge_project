@@ -3,12 +3,12 @@
   </div>
   <div>
     <ul class="navbar">
-      <li class="nav-element"><button @click="startButton"> {{ show ? "Hide" : "Show" }} </button></li>
       <li class="nav-element">Latest scanned code: {{ latestCode }}</li>
       <li class="nav-element"><button @click="findProduct(latestCode)">Get product</button></li>
-      <li class="nav-element">{{ product }}</li>
     </ul>
   </div>
+  <p class="nav-element">{{ product }}</p>
+  <button @click="startButton"> {{ show ? "Hide" : "Show" }} </button>
   <div v-if="show">
     <div class="scanner-container" ref="scannerContainer"
       style="width: 80%; max-width: 300px; height: 300px; border: 1px solid #ccc;"></div>
@@ -122,7 +122,8 @@ div[ref="scannerContainer"] canvas {
 .navbar {
   display: flex;
   list-style: none;
-  padding-bottom: 8px;
+  padding: 0px;
+  padding-bottom: 12px;
   margin: 0;
   border-bottom: ridge 1px;
 }
@@ -132,6 +133,7 @@ div[ref="scannerContainer"] canvas {
   align-items: center;
   justify-content: flex-start;
   height: 40px;
+  width: 50%;
   padding: 0 1rem;
 }
 </style>
