@@ -38,7 +38,7 @@ const weight = ref('')
 
 async function getWeight() {
   try {
-    const response = await axios.get(`192.168.0.106:4000/weight`)
+    const response = await axios.get(`192.168.0.106:4000/api/weight`)
     weight.value = response.data
 
 
