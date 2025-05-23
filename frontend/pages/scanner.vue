@@ -52,7 +52,7 @@ async function findProduct(code) {
 
     if (productData.status === 1) {
       log(`Produkt hittad: ${productData.product.product_name || 'Namn saknas'}`)
-      product.value = productData.product  // Make sure `product` is a `ref` or `reactive` variable
+      product.value = productData.product._keywords  // Make sure `product` is a `ref` or `reactive` variable
     } else {
       log('Produkt hittades inte')
     }
