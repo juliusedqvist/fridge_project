@@ -4,9 +4,9 @@
   </div>
   <div>
     <ul>
-      <li>Latest scanned code: {{ latestCode }}</li>
-      <li><button @click="findProduct(latestCode)">Get product</button></li>
-      <li>{{ product }}</li>
+      <li class="navbar">Latest scanned code: {{ latestCode }}</li>
+      <li class="navbar"><button @click="findProduct(latestCode)">Get product</button></li>
+      <li class="navbar">{{ product }}</li>
     </ul>
   </div>
   <div v-if="show">
@@ -29,7 +29,7 @@ const logs = ref('');
 
 const show = ref(false);
 const latestCode = ref('');
-const product = ref('');
+const product = ref('Produktnamn');
 
 function startButton() {
   show.value = !show.value;
@@ -52,7 +52,7 @@ async function findProduct(code) {
 
     if (productData.status === 1) {
       log(`Produkt hittad: ${productData.product.product_name || 'Namn saknas'}`)
-      product.value = productData.product._keywords  // Make sure `product` is a `ref` or `reactive` variable
+      product.value = productData.product._keywords
     } else {
       log('Produkt hittades inte')
     }
@@ -117,5 +117,11 @@ div[ref="scannerContainer"] canvas {
   width: 50% !important;
   height: 50% !important;
   object-fit: cover;
+}
+
+.navbar {
+  display: inline-block;
+  width: 200px;
+  background-color: green;
 }
 </style>
