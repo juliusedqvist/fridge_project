@@ -2,6 +2,7 @@
 node_modules/
 **/package.json
 **/package-lock.json
+**/scale-out.txt
 
 # Nuxt & build output
 .nuxt/
