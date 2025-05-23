@@ -3,11 +3,11 @@
   </div>
   <div>
     <ul class="navbar">
-      <li class="nav-element">Latest scanned code: {{ latestCode }}</li>
-      <li class="nav-element"><button @click="findProduct(latestCode)">Get product</button></li>
+      <li class="nav-element" style="width: 80%;">Latest scanned code: {{ latestCode }}</li>
+      <li class="nav-element" style="width: 20%;"><button @click="findProduct(latestCode)">Get product</button></li>
     </ul>
   </div>
-  <p class="nav-element">{{ product }}</p>
+  <p>{{ product }}</p>
   <button @click="startButton"> {{ show ? "Hide" : "Show" }} </button>
   <div v-if="show">
     <div class="scanner-container" ref="scannerContainer"
@@ -133,7 +133,6 @@ div[ref="scannerContainer"] canvas {
   align-items: center;
   justify-content: flex-start;
   height: 40px;
-  width: 50%;
   padding: 0 1rem;
 }
 </style>
