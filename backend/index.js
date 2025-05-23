@@ -24,16 +24,10 @@ db.connect((err) => {
   console.log('Connected to MySQL database');
 });
 
-app.get('/api/hello', (req, res) => {
-  res.json({ message: 'Hello from Express!' });
-});
+// Routes
+const apiRoutes = require('./routes/api');
+app.use('/api', apiRoutes); // Prefix all API routes with /api
 
-app.post('/api/scan', (req, res) => {
-  const { code } = req.body;
-  console.log('Fick streckkod:', code);
-  // Gör vad du vill med koden här (spara i DB etc)
-  res.json({ status: 'ok' });
-});
 
 app.listen(PORT, () => {
   console.log(`Backend running at http://localhost:${PORT}`);

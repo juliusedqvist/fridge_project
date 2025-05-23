@@ -7,7 +7,10 @@
       <li class="nav-element" style="width: 20%;"><button @click="findProduct(latestCode)">Get product</button></li>
     </ul>
   </div>
-  <p>{{ product }}</p>
+  <div class="navbar2">
+    <li style="width: 70%;">{{ product }}</li>
+    <li><button @click="getWeight">scale</button></li>
+  </div>
   <button @click="startButton"> {{ show ? "Hide" : "Show" }} </button>
   <div v-if="show">
     <div class="scanner-container" ref="scannerContainer"
@@ -30,6 +33,22 @@ const logs = ref('');
 const show = ref(false);
 const latestCode = ref('');
 const product = ref('Produktnamn');
+
+async function getWeight() {
+  try {
+    const response = await axios.get(`192.168.0.106/weight`)
+    const productData = response.data
+
+    if (productData.status === 1) {
+      log(`Produkt hittad: ${productData.product.product_name || 'Namn saknas'}`)
+      product.value = productData.product._keywords
+    } else {
+      log('Produkt hittades inte')
+    }
+  } catch (error) {
+    log(`Fel vid API-förfrågan: ${error.message}`)
+  }
+}
 
 function startButton() {
   show.value = !show.value;
@@ -126,6 +145,15 @@ div[ref="scannerContainer"] canvas {
   padding-bottom: 12px;
   margin: 0;
   border-bottom: ridge 1px;
+}
+
+.navbar2 {
+  display: flex;
+  list-style: none;
+  padding: 0px;
+  padding-bottom: 12px;
+  padding-top: 12px;
+  margin: 0;
 }
 
 .nav-element {
