@@ -10,6 +10,7 @@
   <div class="navbar2">
     <li style="width: 70%;">{{ product }}</li>
     <li><button @click="getWeight">scale</button></li>
+    <li>{{ weight }}</li>
   </div>
   <button @click="startButton"> {{ show ? "Hide" : "Show" }} </button>
   <div v-if="show">
@@ -33,20 +34,16 @@ const logs = ref('');
 const show = ref(false);
 const latestCode = ref('');
 const product = ref('Produktnamn');
+const weight = ref('')
 
 async function getWeight() {
   try {
-    const response = await axios.get(`192.168.0.106/weight`)
-    const productData = response.data
+    const response = await axios.get(`192.168.0.106:4000/weight`)
+    const weight = response.data
 
-    if (productData.status === 1) {
-      log(`Produkt hittad: ${productData.product.product_name || 'Namn saknas'}`)
-      product.value = productData.product._keywords
-    } else {
-      log('Produkt hittades inte')
-    }
+
   } catch (error) {
-    log(`Fel vid API-förfrågan: ${error.message}`)
+    console.log(`Fel vid API-förfrågan: ${error.message}`)
   }
 }
 
