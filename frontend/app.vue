@@ -13,7 +13,6 @@
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
-
   display: flex;
   justify-content: center;
   align-items: stretch;
@@ -35,14 +34,12 @@
   .content-wrapper {
     max-width: 95%;
     /* allow it to almost fill the screen */
-    padding: 1rem 1.5rem;
     /* less padding horizontally */
     border-radius: 4px;
     /* smaller radius or remove */
   }
 
   .layout-container {
-    padding: 1rem;
     /* reduce overall padding on mobile */
   }
 }
