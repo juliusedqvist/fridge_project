@@ -34,7 +34,7 @@ const logs = ref('');
 const show = ref(false);
 const latestCode = ref('');
 const product = ref('Produktnamn');
-const weight = ref('Not weighted');
+const weight = ref('N/A');
 
 async function getWeight() {
   try {
