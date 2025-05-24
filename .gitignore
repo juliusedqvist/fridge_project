@@ -27,6 +27,7 @@ pnpm-debug.log*
 *.pem
 *.key
 *.crt
+*.csr
 
 # OS
 .DS_Store
