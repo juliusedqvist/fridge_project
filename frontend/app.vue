@@ -17,8 +17,6 @@
   display: flex;
   justify-content: center;
   align-items: stretch;
-  /* full height */
-  padding: 2rem;
 }
 
 .content-wrapper {
