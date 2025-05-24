@@ -48,6 +48,7 @@ router.post('/add_product', (req, res) => {
     INSERT INTO Food_Item (Name, Weight, KcalPer100g, ProteinPer100g, Exp_Date)
     VALUES (?, ?, ?, ?, ?)
   `;
+  console.log(name, weight, kcal, protein, exp_date);
 
   db.query(insertQuery, [name, weight, kcal, protein, exp_date], (err, result) => {
     if (err) {
