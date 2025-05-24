@@ -12,6 +12,7 @@
     <li class="nav2-element"><button @click="getWeight">scale</button></li>
     <li class="nav2-element">{{ weight }}</li>
   </div>
+  <p class="whole-button">Add to database</p>
   <button @click="startButton"> {{ show ? "Hide" : "Show" }} </button>
   <div v-if="show">
     <div class="scanner-container" ref="scannerContainer"
@@ -67,6 +68,7 @@ async function findProduct(code) {
     const productData = response.data
 
     if (productData.status === 1) {
+      show.value = !show.value
       log(`Produkt hittad: ${productData.product.product_name || 'Namn saknas'}`)
       product.value = `${productData.product.brands}: ${productData.product.product_name}`
     } else {
@@ -167,5 +169,10 @@ div[ref="scannerContainer"] canvas {
   justify-content: flex-start;
   height: 30px;
   padding: 0 10px;
+}
+
+.whole-button {
+  height: 30px;
+  border: ridge 1px;
 }
 </style>
