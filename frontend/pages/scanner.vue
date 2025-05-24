@@ -4,29 +4,28 @@
     </div>
     <div>
       <ul class="navbar">
-        <li class="nav-element" style="width: 80%;">Latest scanned code: {{ latestCode }}</li>
-        <li class="nav-element" style="width: 20%;"><button @click="findProduct(latestCode)">Get product</button></li>
+        <li class="nav-element" style="flex-grow: 4;">Latest scanned code: {{ latestCode }}</li>
+        <li class="nav-element" style="flex-grow: 1;"><button @click="findProduct(latestCode)">Get product</button></li>
       </ul>
     </div>
     <div class="navbar2">
-      <li class="nav2-element" style="width: 55%;">{{ product }}</li>
-      <li class="nav2-element"><button @click="getWeight">scale</button></li>
-      <li class="nav2-element">{{ weight }}</li>
+      <li class="nav2-element" style="flex-grow: 4;">{{ product }}</li>
+      <li class="nav2-element" style="flex-grow: 1;"><button @click="getWeight">scale</button></li>
+      <li class="nav2-element" style="flex-grow: 1;">{{ weight }}</li>
     </div>
     <p class="whole-button" @click="addToDatabase">Add to database</p>
     <button @click="startButton"> {{ show ? "Hide" : "Show" }} </button>
     <div v-if="show">
-      <div class="scanner-container" ref="scannerContainer"
-        style="width: 80%; max-width: 300px; height: 300px; border: 1px solid #ccc;"></div>
+      <div class="scanner-container" ref="scannerContainer"></div>
       <p>{{ resultText }}</p>
       <h2>Loggar</h2>
-      <pre style="background: #f0f0f0; padding: 1em; height: 150px; overflow-y: auto;">{{ logs }}</pre>
+      <pre class="log-area">{{ logs }}</pre>
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref, onMounted, onBeforeUnmount } from 'vue'
+import { ref, onBeforeUnmount, nextTick } from 'vue'
 import Quagga from '@ericblade/quagga2'
 import axios from 'axios'
 
@@ -56,8 +55,6 @@ async function getWeight() {
     const response = await axios.get(`/api/weight`);
     weight.value = `${response.data.weight}`;
     productFields.value.weight = parseInt(response.data.weight);
-
-
   } catch (error) {
     console.log(`Fel vid API-förfrågan: ${error.message}`);
   }
@@ -69,7 +66,7 @@ function startButton() {
   if (show.value) {
     log('Komponenten monterad');
     nextTick(() => {
-      startScanner(); // now scannerContainer is available
+      startScanner();
     });
   } else {
     Quagga.stop();
@@ -87,8 +84,6 @@ async function findProduct(code) {
       log(`Produkt hittad: ${productData.product.product_name || 'Namn saknas'}`)
       product.value = `${productData.product.brands}: ${productData.product.product_name}`
       console.log(productData);
-
-      // name, weight kcal/100, protein/100, expiration date
 
       productFields.value = {
         name: productData.product.product_name,
@@ -144,10 +139,6 @@ function startScanner() {
     latestCode.value = code
   })
 }
-//
-// onMounted(() => {
-//   startScanner()
-// })
 
 onBeforeUnmount(() => {
   Quagga.stop()
@@ -158,42 +149,90 @@ onBeforeUnmount(() => {
 <style scoped>
 .content-wrapper {
   max-width: 900px;
-  /* or whatever max width your white content area has */
   margin: 0 auto;
-  /* center horizontally */
   padding: 0 1rem;
-  /* some horizontal padding */
   box-sizing: border-box;
   overflow-x: hidden;
-  /* prevent horizontal scroll */
 }
 
-/* Adjust the button so it doesn't overflow */
-.whole-button {
-  width: 100%;
-  /* full width inside container */
-  max-width: 100%;
-  box-sizing: border-box;
-  word-wrap: break-word;
-  /* avoid long text overflow */
+.navbar {
+  display: flex;
+  list-style: none;
+  padding: 0 0 12px 0;
+  margin: 0;
+  border-bottom: ridge 1px;
 }
 
-/* Nav elements should flex-grow to fill space but never overflow */
-.nav-element,
-.nav2-element {
+.navbar2 {
+  display: flex;
+  list-style: none;
+  padding: 12px 0 12px 0;
+  margin: 0;
+}
+
+.nav-element {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  height: 40px;
+  padding: 0 1rem;
   flex-grow: 1;
   min-width: 0;
-  /* allows flex items to shrink properly */
   overflow-wrap: break-word;
 }
 
-/* Scanner container responsive */
+.nav2-element {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  height: 30px;
+  padding: 0 10px;
+  flex-grow: 1;
+  min-width: 0;
+  overflow-wrap: break-word;
+}
+
+.whole-button {
+  background-color: #222;
+  border-radius: 6px;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #fff;
+  font-family: Arial, sans-serif;
+  font-size: 18px;
+  padding: 20px;
+  text-decoration: none;
+  width: 100%;
+  box-sizing: border-box;
+  word-wrap: break-word;
+  margin-bottom: 1rem;
+}
+
+.whole-button:hover {
+  background-color: #333;
+}
+
+.whole-button:active {
+  background-color: #444;
+  top: 1px;
+}
+
 .scanner-container {
   width: 100%;
-  /* fill container width */
   max-width: 300px;
   height: 300px;
   border: 1px solid #ccc;
   margin-bottom: 0.5rem;
+}
+
+.log-area {
+  background: #f0f0f0;
+  padding: 1em;
+  height: 150px;
+  overflow-y: auto;
+  white-space: pre-wrap;
 }
 </style>
