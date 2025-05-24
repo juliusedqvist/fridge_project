@@ -9,7 +9,7 @@
 <style scoped>
 .layout-container {
   min-height: 100vh;
-  background-image: url('/your-image.jpg');
+  background-image: url('/Images/DSC01042.jpg');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
