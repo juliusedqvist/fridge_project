@@ -18,13 +18,27 @@ router.get('/weight', (req, res) => {
 });
 
 router.post('/add_product', (req, res) => {
-  console.log(req.body);
-  db.query('SELECT * FROM products', (err, results) => {
+  const { name, weight, kcal, protein, exp_date } = req.body;
+
+  if (!name || !weight || !kcal || !protein || !exp_date) {
+    return res.status(400).json({ error: 'Missing required fields' });
+  }
+
+  const insertQuery = `
+    INSERT INTO Food_Item (Name, Weight, KcalPer100g, ProteinPer100g, Exp_Date)
+    VALUES (?, ?, ?, ?, ?)
+  `;
+
+  db.query(insertQuery, [name, weight, kcal, protein, exp_date], (err, result) => {
     if (err) {
-      console.error('Query error:', err);
-      return res.status(500).json({ error: 'Database query failed' });
+      console.error('Insert error:', err);
+      return res.status(500).json({ error: 'Failed to insert product' });
     }
-    res.json(results);
+
+    res.status(201).json({
+      message: 'Product added successfully',
+      productId: result.insertId
+    });
   });
 });
 
