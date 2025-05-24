@@ -43,4 +43,12 @@
     padding: 0;
   }
 }
+
+html,
+body {
+  margin: 0;
+  height: 100%;
+  background-color: black;
+  /* or a dark color that matches your image */
+}
 </style>
