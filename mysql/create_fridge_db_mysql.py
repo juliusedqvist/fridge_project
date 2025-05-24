@@ -2,7 +2,7 @@ import mysql.connector
 from dotenv import load_dotenv
 import os
 
-# Load variables from .env file into environment
+# Load environment variables from .env file
 load_dotenv()
 
 # Fetch credentials from environment variables
@@ -13,56 +13,79 @@ config = {
     'database': os.getenv('DB_NAME')
 }
 
-# Anslut till databasen
+# Connect to the database
 conn = mysql.connector.connect(**config)
 cursor = conn.cursor()
 
-# Skapa tabellen för produkter i kylen
+# Drop tables if they exist (order matters because of foreign keys)
+drop_tables = [
+    "DROP TABLE IF EXISTS Recipe_Item;",
+    "DROP TABLE IF EXISTS Meal_Prep_Recipe;",
+    "DROP TABLE IF EXISTS Food_Item;",
+    "DROP TABLE IF EXISTS Recipe;",
+    "DROP TABLE IF EXISTS Meal_Prep;"
+]
+
+for stmt in drop_tables:
+    cursor.execute(stmt)
+
+# Create tables
 cursor.execute("""
-CREATE TABLE IF NOT EXISTS products (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(255) NOT NULL,
-    weight_grams INT NOT NULL,
-    calories_per_100g INT NOT NULL,
-    protein_per_100g FLOAT NOT NULL,
-    expiration_date DATE NOT NULL,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+CREATE TABLE Food_Item (
+    Food_Id INT PRIMARY KEY AUTO_INCREMENT,
+    Name VARCHAR(255) NOT NULL,
+    Weight FLOAT NOT NULL,
+    KcalPer100g FLOAT NOT NULL,
+    ProteinPer100g FLOAT NOT NULL,
+    Exp_Date DATE NOT NULL,
+    State VARCHAR(50) NOT NULL DEFAULT 'available'
 );
 """)
 
-# Skapa tabellen för recept
 cursor.execute("""
-CREATE TABLE IF NOT EXISTS recipes (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(255) NOT NULL,
-    description TEXT
+CREATE TABLE Recipe (
+    Recipe_Id INT PRIMARY KEY AUTO_INCREMENT,
+    Name VARCHAR(255) NOT NULL
 );
 """)
 
-# Kopplingstabell mellan recept och ingredienser
 cursor.execute("""
-CREATE TABLE IF NOT EXISTS recipe_ingredients (
-    recipe_id INT,
-    product_name VARCHAR(255),
-    required_grams INT,
-    PRIMARY KEY (recipe_id, product_name),
-    FOREIGN KEY (recipe_id) REFERENCES recipes(id) ON DELETE CASCADE
+CREATE TABLE Recipe_Item (
+    Food_Id INT,
+    Recipe_Id INT,
+    QuantityInGrams FLOAT NOT NULL,
+    PRIMARY KEY (Food_Id, Recipe_Id),
+    FOREIGN KEY (Food_Id) REFERENCES Food_Item(Food_Id),
+    FOREIGN KEY (Recipe_Id) REFERENCES Recipe(Recipe_Id)
 );
 """)
 
-# Valfri tabell för inköpslista
 cursor.execute("""
-CREATE TABLE IF NOT EXISTS shopping_list (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    product_name VARCHAR(255) NOT NULL,
-    needed_grams INT NOT NULL,
-    added_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+CREATE TABLE Meal_Prep (
+    Meal_Prep_Id INT PRIMARY KEY AUTO_INCREMENT,
+    Count INT NOT NULL,
+    Total_Kcal FLOAT,
+    Total_Protein FLOAT,
+    Food_Weight FLOAT,
+    Created_At TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 """)
 
+cursor.execute("""
+CREATE TABLE Meal_Prep_Recipe (
+    Meal_Prep_Id INT,
+    Recipe_Id INT,
+    Portions INT NOT NULL,
+    PRIMARY KEY (Meal_Prep_Id, Recipe_Id),
+    FOREIGN KEY (Meal_Prep_Id) REFERENCES Meal_Prep(Meal_Prep_Id),
+    FOREIGN KEY (Recipe_Id) REFERENCES Recipe(Recipe_Id)
+);
+""")
+
+# Commit changes and close connection
 conn.commit()
 cursor.close()
 conn.close()
 
-print("MySQL-databasen 'fridge' är klar med alla tabeller.")
+print("MySQL database is ready with all tables.")
 
