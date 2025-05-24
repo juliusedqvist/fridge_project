@@ -35,6 +35,7 @@ const logs = ref('');
 const show = ref(false);
 const latestCode = ref('');
 const product = ref('Produktnamn');
+const productFields = ref('')
 const weight = ref('N/A');
 
 async function addToDatabase() {
@@ -74,7 +75,15 @@ async function findProduct(code) {
     if (productData.status === 1) {
       show.value = !show.value
       log(`Produkt hittad: ${productData.product.product_name || 'Namn saknas'}`)
-      product.value = productData //`${productData.product.brands}: ${productData.product.product_name}`
+      product.value = `${productData.product.brands}: ${productData.product.product_name}`
+      console.log(productData);
+
+      // name, weight kcal/100, protein/100, expiration date
+
+      productFields.value = {
+        name: productData.product.product_name
+      }
+
     } else {
       log('Produkt hittades inte')
     }
