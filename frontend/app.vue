@@ -6,7 +6,7 @@
   </div>
 </template>
 
-<style scoped>
+<style>
 html,
 body {
   margin: 0;
