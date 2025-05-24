@@ -40,7 +40,7 @@ const weight = ref('N/A');
 
 async function addToDatabase() {
   console.log(productFields.value);
-  const res = await axios.post('/api/add_product', { test: 1, test2: 2 });
+  const res = await axios.post('/api/add_product', productFields.value);
 }
 
 async function getWeight() {
