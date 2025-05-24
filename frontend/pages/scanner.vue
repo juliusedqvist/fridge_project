@@ -172,10 +172,26 @@ div[ref="scannerContainer"] canvas {
 }
 
 .whole-button {
-  border: ridge 1px;
-  align-items: center;
-  justify-content: flex-start;
-  height: 30px;
-  padding: 0 10px;
+  background-color: #44c767;
+  border-radius: 4px;
+  border: 2px solid #18ab29;
+  display: inline-block;
+  cursor: pointer;
+  color: #ffffff;
+  font-family: Arial;
+  font-size: 17px;
+  padding: 19px 76px;
+  text-decoration: none;
+  text-shadow: 0px 1px 0px #2f6627;
+  width: 100%;
+}
+
+.whole-button:hover {
+  background-color: #5cbf2a;
+}
+
+.whole-button:active {
+  position: relative;
+  top: 1px;
 }
 </style>
