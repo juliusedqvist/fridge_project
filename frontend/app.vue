@@ -16,6 +16,7 @@
   display: flex;
   justify-content: center;
   align-items: stretch;
+  padding: 0;
 }
 
 .content-wrapper {
@@ -26,7 +27,7 @@
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
   overflow-y: auto;
-  padding: 2rem;
+  padding: 0;
 }
 
 /* Mobile styles */
@@ -34,13 +35,12 @@
   .content-wrapper {
     max-width: 95%;
     /* allow it to almost fill the screen */
-    /* less padding horizontally */
     border-radius: 4px;
     /* smaller radius or remove */
   }
 
   .layout-container {
-    /* reduce overall padding on mobile */
+    padding: 0;
   }
 }
 </style>
