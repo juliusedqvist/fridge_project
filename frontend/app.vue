@@ -18,7 +18,7 @@
 /* Parallax sides */
 .parallax-side {
   width: 25%;
-  background-image: url('/your-image.jpg');
+  background-image: url('/Images/DSC01042.jpg');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
