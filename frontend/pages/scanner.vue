@@ -68,7 +68,7 @@ async function findProduct(code) {
 
     if (productData.status === 1) {
       log(`Produkt hittad: ${productData.product.product_name || 'Namn saknas'}`)
-      product.value = productData.product._keywords
+      product.value = productData
     } else {
       log('Produkt hittades inte')
     }
