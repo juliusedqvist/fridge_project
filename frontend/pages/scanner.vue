@@ -165,7 +165,7 @@ div[ref="scannerContainer"] canvas {
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  height: 40px;
-  padding: 0 1rem;
+  height: 30px;
+  padding: 0 10px;
 }
 </style>
