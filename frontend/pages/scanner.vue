@@ -172,7 +172,10 @@ div[ref="scannerContainer"] canvas {
 }
 
 .whole-button {
-  height: 30px;
   border: ridge 1px;
+  align-items: center;
+  justify-content: flex-start;
+  height: 30px;
+  padding: 0 10px;
 }
 </style>
