@@ -3,7 +3,6 @@ const express = require('express');
 const cors = require('cors');
 const mysql = require('mysql2');
 
-
 const app = express();
 const PORT = 4000;
 
@@ -33,4 +32,4 @@ app.listen(PORT, () => {
   console.log(`Backend running at http://localhost:${PORT}`);
 });
 
-
+module.exports = db

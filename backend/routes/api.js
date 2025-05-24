@@ -16,4 +16,15 @@ router.get('/weight', (req, res) => {
   });
 });
 
+router.post('/add_product', (req, res) => {
+  console.log(req.body);
+  db.query('SELECT * FROM products', (err, results) => {
+    if (err) {
+      console.error('Query error:', err);
+      return res.status(500).json({ error: 'Database query failed' });
+    }
+    res.json(results);
+  });
+});
+
 module.exports = router;

@@ -12,7 +12,7 @@
     <li class="nav2-element"><button @click="getWeight">scale</button></li>
     <li class="nav2-element">{{ weight }}</li>
   </div>
-  <p class="whole-button">Add to database</p>
+  <p class="whole-button" @click="addToDatabase">Add to database</p>
   <button @click="startButton"> {{ show ? "Hide" : "Show" }} </button>
   <div v-if="show">
     <div class="scanner-container" ref="scannerContainer"
@@ -36,6 +36,10 @@ const show = ref(false);
 const latestCode = ref('');
 const product = ref('Produktnamn');
 const weight = ref('N/A');
+
+function addToDatabase() {
+  const res = await axios.post('/api/add_product', { test: 1, test2: 2 });
+}
 
 async function getWeight() {
   try {
