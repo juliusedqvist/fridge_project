@@ -172,26 +172,33 @@ div[ref="scannerContainer"] canvas {
 }
 
 .whole-button {
-  background-color: #44c767;
-  border-radius: 4px;
-  border: 2px solid #18ab29;
-  display: inline-block;
+  background-color: #222;
+  /* Dark background */
+  border-radius: 6px;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
-  color: #ffffff;
-  font-family: Arial;
-  font-size: 17px;
-  padding: 19px 76px;
+  color: #fff;
+  /* White text */
+  font-family: Arial, sans-serif;
+  font-size: 18px;
+  padding: 20px;
   text-decoration: none;
-  text-shadow: 0px 1px 0px #2f6627;
-  width: 50%;
+  width: 100vw;
+  height: 100vh;
+  box-sizing: border-box;
 }
 
 .whole-button:hover {
-  background-color: #5cbf2a;
+  background-color: #333;
+  /* Slightly lighter on hover */
 }
 
 .whole-button:active {
-  position: relative;
+  background-color: #444;
+  /* Even lighter when pressed */
   top: 1px;
 }
 </style>
