@@ -37,7 +37,7 @@ const latestCode = ref('');
 const product = ref('Produktnamn');
 const weight = ref('N/A');
 
-function addToDatabase() {
+async function addToDatabase() {
   const res = await axios.post('/api/add_product', { test: 1, test2: 2 });
 }
 
