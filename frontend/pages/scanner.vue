@@ -43,7 +43,7 @@ async function addToDatabase() {
   if (productFields.value.exp_date === 0 || productFields.value.exp_date === "0") {
     const oneWeekLater = new Date();
     oneWeekLater.setDate(oneWeekLater.getDate() + 7);
-    exp_date = oneWeekLater.toISOString().split('T')[0]; // format: YYYY-MM-DD
+    productFields.value.exp_date = oneWeekLater.toISOString().split('T')[0]; // format: YYYY-MM-DD
   }
   console.log(productFields.value)
   const res = await axios.post('/api/add_product', productFields.value);
