@@ -38,6 +38,12 @@ router.post('/add_product', (req, res) => {
     return res.status(400).json({ error: 'Missing required fields' });
   }
 
+  if (exp_date === 0 || exp_date === "0") {
+    const oneWeekLater = new Date();
+    oneWeekLater.setDate(oneWeekLater.getDate() + 7);
+    exp_date = oneWeekLater.toISOString().split('T')[0]; // format: YYYY-MM-DD
+  }
+
   const insertQuery = `
     INSERT INTO Food_Item (Name, Weight, KcalPer100g, ProteinPer100g, Exp_Date)
     VALUES (?, ?, ?, ?, ?)
