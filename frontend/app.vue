@@ -9,39 +9,44 @@
 <style scoped>
 .layout-container {
   min-height: 100vh;
+
+  /* background image for desktop */
   background-image: url('/Images/DSC01042.jpg');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
+
   display: flex;
   justify-content: center;
-  align-items: flex-start;
+  align-items: stretch;
+  /* full height */
   padding: 2rem;
 }
 
-/* Content wrapper - mobile: white background, full height */
+/* White content box */
 .content-wrapper {
+  background: white;
   width: 100%;
-  max-width: 800px;
-  padding: 2rem;
+  max-width: 900px;
+  /* controls how wide the white content is on desktop */
+  min-height: 100vh;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
-
-  /* On desktop, no background, no height restriction */
-  background: transparent;
-  min-height: auto;
-  box-shadow: none;
-  border-radius: 0;
+  overflow-y: auto;
+  padding: 2rem;
 }
 
-/* Mobile styles */
+/* Mobile styles: white background full width, hide background image sides */
 @media (max-width: 768px) {
+  .layout-container {
+    background: none;
+    /* remove background image */
+  }
+
   .content-wrapper {
-    background: white;
-    min-height: 100vh;
-    /* full viewport height */
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
+    max-width: 100%;
+    border-radius: 0;
+    padding: 1.5rem;
   }
 }
 </style>
