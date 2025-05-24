@@ -183,7 +183,7 @@ div[ref="scannerContainer"] canvas {
   padding: 19px 76px;
   text-decoration: none;
   text-shadow: 0px 1px 0px #2f6627;
-  width: 80%;
+  width: 100vw;
 }
 
 .whole-button:hover {
