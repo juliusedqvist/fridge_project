@@ -1,9 +1,10 @@
 <template>
   <div class="layout-container">
-    <div class="parallax-side"></div>
+    <div class="parallax-side left"></div>
     <div class="main-content">
       <NuxtPage />
     </div>
+    <div class="parallax-side right"></div>
   </div>
 </template>
 
@@ -14,17 +15,21 @@
   overflow: hidden;
 }
 
-/* Parallax Side */
+/* Parallax sides */
 .parallax-side {
-  width: 35%;
-  background-image: url('/Images/DSC01042.jpg');
+  width: 25%;
+  background-image: url('/your-image.jpg');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
-  /* Parallax effect */
 }
 
-/* Main Content */
+/* If you want to mirror the right side image */
+.parallax-side.right {
+  transform: scaleX(-1);
+}
+
+/* Main content in the center */
 .main-content {
   flex: 1;
   background: white;
