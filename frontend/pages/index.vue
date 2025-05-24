@@ -6,7 +6,6 @@
 import Scanner from '~/pages/scanner.vue'
 
 export default {
-  components: { Scanner }
+  components: { Scanner },
 }
 </script>
- 

@@ -5,7 +5,6 @@ node_modules/
 **/scale-out.txt
 
 # Nuxt & build output
-.nuxt/
 dist/
 .build/
 .cache/

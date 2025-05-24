@@ -2,11 +2,7 @@
   "code": "7311800971005",
   "product": {
     "_id": "7311800971005",
-    "_keywords": [
-      "jubileumskakor",
-      "polarbrod",
-      "vete"
-    ],
+    "_keywords": ["jubileumskakor", "polarbrod", "vete"],
     "added_countries_tags": [],
     "allergens": "",
     "allergens_from_ingredients": "",
@@ -15,9 +11,7 @@
     "allergens_tags": [],
     "brands": "Polarbröd",
     "brands_old": "Polarbröd",
-    "brands_tags": [
-      "polarbrod"
-    ],
+    "brands_tags": ["polarbrod"],
     "categories_properties": {},
     "categories_properties_tags": [
       "all-products",
@@ -44,17 +38,11 @@
     ],
     "complete": 0,
     "completeness": 0.3,
-    "correctors_tags": [
-      "macrofactor"
-    ],
+    "correctors_tags": ["macrofactor"],
     "countries": "se",
-    "countries_hierarchy": [
-      "en:sweden"
-    ],
+    "countries_hierarchy": ["en:sweden"],
     "countries_lc": "en",
-    "countries_tags": [
-      "en:sweden"
-    ],
+    "countries_tags": ["en:sweden"],
     "created_t": 1710784162,
     "creator": "foodvisor",
     "data_quality_bugs_tags": [],
@@ -86,10 +74,7 @@
       "en:environmental-score-threatened-species-ingredients-missing"
     ],
     "data_sources": "App - macrofactor, Apps",
-    "data_sources_tags": [
-      "app-macrofactor",
-      "apps"
-    ],
+    "data_sources_tags": ["app-macrofactor", "apps"],
     "ecoscore_data": {
       "adjustments": {
         "origins_of_ingredients": {
@@ -103,12 +88,8 @@
           ],
           "epi_score": 0,
           "epi_value": -5,
-          "origins_from_categories": [
-            "en:unknown"
-          ],
-          "origins_from_origins_field": [
-            "en:unknown"
-          ],
+          "origins_from_categories": ["en:unknown"],
+          "origins_from_origins_field": ["en:unknown"],
           "transportation_score": 0,
           "transportation_scores": {
             "ad": 0,
@@ -339,24 +320,12 @@
       "status": "unknown"
     },
     "ecoscore_grade": "unknown",
-    "ecoscore_tags": [
-      "unknown"
-    ],
-    "editors_tags": [
-      "foodvisor",
-      "macrofactor"
-    ],
-    "entry_dates_tags": [
-      "2024-03-18",
-      "2024-03",
-      "2024"
-    ],
+    "ecoscore_tags": ["unknown"],
+    "editors_tags": ["foodvisor", "macrofactor"],
+    "entry_dates_tags": ["2024-03-18", "2024-03", "2024"],
     "food_groups_tags": [],
     "id": "7311800971005",
-    "informers_tags": [
-      "foodvisor",
-      "macrofactor"
-    ],
+    "informers_tags": ["foodvisor", "macrofactor"],
     "interface_version_created": "20150316.jqm2",
     "interface_version_modified": "20150316.jqm2",
     "lang": "en",
@@ -368,21 +337,9 @@
       "en": 1,
       "sv": 1
     },
-    "languages_hierarchy": [
-      "en:english",
-      "en:swedish"
-    ],
-    "languages_tags": [
-      "en:english",
-      "en:swedish",
-      "en:2",
-      "en:multilingual"
-    ],
-    "last_edit_dates_tags": [
-      "2025-03-26",
-      "2025-03",
-      "2025"
-    ],
+    "languages_hierarchy": ["en:english", "en:swedish"],
+    "languages_tags": ["en:english", "en:swedish", "en:2", "en:multilingual"],
+    "last_edit_dates_tags": ["2025-03-26", "2025-03", "2025"],
     "last_editor": "macrofactor",
     "last_modified_by": "macrofactor",
     "last_modified_t": 1742967559,
@@ -405,9 +362,7 @@
     "no_nutrition_data": "",
     "nova_group_debug": "no nova group when the product does not have ingredients",
     "nova_group_error": "missing_ingredients",
-    "nova_groups_tags": [
-      "unknown"
-    ],
+    "nova_groups_tags": ["unknown"],
     "nutrient_levels": {},
     "nutrient_levels_tags": [],
     "nutriments": {
@@ -496,25 +451,17 @@
         "nutriscore_computed": 0
       }
     },
-    "nutriscore_2021_tags": [
-      "unknown"
-    ],
-    "nutriscore_2023_tags": [
-      "unknown"
-    ],
+    "nutriscore_2021_tags": ["unknown"],
+    "nutriscore_2023_tags": ["unknown"],
     "nutriscore_grade": "unknown",
-    "nutriscore_tags": [
-      "unknown"
-    ],
+    "nutriscore_tags": ["unknown"],
     "nutriscore_version": "2023",
     "nutrition_data": "on",
     "nutrition_data_per": "100g",
     "nutrition_data_prepared_per": "100g",
     "nutrition_grade_fr": "unknown",
     "nutrition_grades": "unknown",
-    "nutrition_grades_tags": [
-      "unknown"
-    ],
+    "nutrition_grades_tags": ["unknown"],
     "nutrition_score_beverage": 0,
     "nutrition_score_debug": "no score when the product does not have a category - missing sodium_100g",
     "nutrition_score_warning_no_fruits_vegetables_nuts": 1,
@@ -525,15 +472,9 @@
     "packagings_materials": {},
     "photographers_tags": [],
     "pnns_groups_1": "unknown",
-    "pnns_groups_1_tags": [
-      "unknown",
-      "missing-category"
-    ],
+    "pnns_groups_1_tags": ["unknown", "missing-category"],
     "pnns_groups_2": "unknown",
-    "pnns_groups_2_tags": [
-      "unknown",
-      "missing-category"
-    ],
+    "pnns_groups_2_tags": ["unknown", "missing-category"],
     "popularity_key": 3,
     "popularity_tags": [
       "top-75-percent-scans-2024",
