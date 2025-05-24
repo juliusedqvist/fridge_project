@@ -187,7 +187,7 @@ div[ref="scannerContainer"] canvas {
   padding: 20px;
   text-decoration: none;
   width: 100vw;
-  height: 100vh;
+  height: 10vh;
   box-sizing: border-box;
 }
 
