@@ -77,7 +77,7 @@ function startButton() {
 
 async function findProduct(code) {
   try {
-    const response = await axios.get(`https://world.openfoodfacts.org/api/v0/product/7340131605099.json`)
+    const response = await axios.get(`https://world.openfoodfacts.org/api/v0/product/${code}.json`)
     const productData = response.data
 
     if (productData.status === 1) {
