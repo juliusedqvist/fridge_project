@@ -56,6 +56,7 @@ async function addToDatabase() {
   }
   console.log(productFields.value)
   const res = await axios.post('/api/add_product', productFields.value)
+  product.value = "";
 }
 
 async function getWeight() {
