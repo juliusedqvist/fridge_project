@@ -41,6 +41,7 @@ const weight = ref('N/A');
 async function addToDatabase() {
   console.log(productFields.value);
   if (productFields.value.exp_date === 0 || productFields.value.exp_date === "0") {
+    console.log("hello");
     const oneWeekLater = new Date();
     oneWeekLater.setDate(oneWeekLater.getDate() + 7);
     exp_date = oneWeekLater.toISOString().split('T')[0]; // format: YYYY-MM-DD
