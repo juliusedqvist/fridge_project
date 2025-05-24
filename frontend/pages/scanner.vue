@@ -8,9 +8,9 @@
     </ul>
   </div>
   <div class="navbar2">
-    <li style="width: 60%;">{{ product }}</li>
-    <li><button @click="getWeight">scale</button></li>
-    <li>{{ weight }}</li>
+    <li class="nav2-element" style="width: 60%;">{{ product }}</li>
+    <li class="nav2-element"><button @click="getWeight">scale</button></li>
+    <li class="nav2-element">{{ weight }}</li>
   </div>
   <button @click="startButton"> {{ show ? "Hide" : "Show" }} </button>
   <div v-if="show">
@@ -154,6 +154,14 @@ div[ref="scannerContainer"] canvas {
 }
 
 .nav-element {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  height: 40px;
+  padding: 0 1rem;
+}
+
+.nav2-element {
   display: flex;
   align-items: center;
   justify-content: flex-start;
