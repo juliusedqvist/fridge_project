@@ -17,6 +17,19 @@ router.get('/weight', (req, res) => {
   });
 });
 
+router.get('/get_products', (req, res) => {
+  const query = 'SELECT * FROM Food_Item';
+
+  db.query(query, (err, results) => {
+    if (err) {
+      console.error('Query error:', err);
+      return res.status(500).json({ error: 'Database query failed' });
+    }
+
+    res.status(200).json(results);
+  });
+});
+
 router.post('/add_product', (req, res) => {
   const { name, weight, kcal, protein, exp_date } = req.body;
   console.log(req.body);
