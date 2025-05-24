@@ -16,4 +16,11 @@ export default defineNuxtConfig({
     host: '0.0.0.0',
     port: 3000,
   },
+  vite: {
+    server: {
+      host: '0.0.0.0',  // listen on all interfaces
+      allowedHosts: ['fridge-project.com', 'localhost', '127.0.0.1'],
+    },
+  },
 })
+
