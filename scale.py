@@ -30,7 +30,7 @@ try:
 
             # print(f"Weight: {weight_raw} {unit}")
             with open("scale-out.txt", "w") as f:
-                f.write(f"{weight_raw} {unit}")
+                f.write(f"{weight_raw} {unit}\n")
         time.sleep(0.5)
 
 except KeyboardInterrupt:
