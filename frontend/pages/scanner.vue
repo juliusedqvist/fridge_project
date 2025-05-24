@@ -8,7 +8,7 @@
     </ul>
   </div>
   <div class="navbar2">
-    <li class="nav2-element" style="width: 60%;">{{ product }}</li>
+    <li class="nav2-element" style="width: 55%;">{{ product }}</li>
     <li class="nav2-element"><button @click="getWeight">scale</button></li>
     <li class="nav2-element">{{ weight }}</li>
   </div>
