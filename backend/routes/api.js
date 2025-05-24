@@ -7,6 +7,7 @@ const router = express.Router()
 
 router.get('/weight', (req, res) => {
   const filePath = path.join(__dirname, '../scale-out.txt')
+  console.log("response!");
 
   fs.readFile(filePath, 'utf8', (err, data) => {
     if (err) {
