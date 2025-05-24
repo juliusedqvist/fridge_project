@@ -31,8 +31,8 @@ router.get('/get_products', (req, res) => {
 });
 
 router.post('/add_product', (req, res) => {
-  // const { name, weight, kcal, protein, exp_date } = req.body;
   console.log(req.body);
+  const { name, weight, kcal, protein, exp_date } = req.body;
 
   if (!name || !weight || !kcal || !protein || !exp_date) {
     return res.status(400).json({ error: 'Missing required fields' });
