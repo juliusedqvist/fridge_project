@@ -39,17 +39,19 @@ const productFields = ref('')
 const weight = ref('N/A');
 
 async function addToDatabase() {
+  console.log(productFields.value);
   const res = await axios.post('/api/add_product', { test: 1, test2: 2 });
 }
 
 async function getWeight() {
   try {
-    const response = await axios.get(`/api/weight`)
-    weight.value = `${response.data.weight}`
+    const response = await axios.get(`/api/weight`);
+    weight.value = `${response.data.weight}`;
+    productFields.value.weight = parseInt(response.data.weight);
 
 
   } catch (error) {
-    console.log(`Fel vid API-förfrågan: ${error.message}`)
+    console.log(`Fel vid API-förfrågan: ${error.message}`);
   }
 }
 
@@ -81,7 +83,11 @@ async function findProduct(code) {
       // name, weight kcal/100, protein/100, expiration date
 
       productFields.value = {
-        name: productData.product.product_name
+        name: productData.product.product_name,
+        weight: 0,
+        kcal: productData.product.nutriments["energy-kcal_100g"],
+        protein: productData.product.nutriments.proteins_100g,
+        exp_date: 0,
       }
 
     } else {
