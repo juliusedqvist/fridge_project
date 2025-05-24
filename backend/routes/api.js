@@ -6,14 +6,13 @@ const db = require('../db')
 const router = express.Router()
 
 router.get('/weight', (req, res) => {
-  const filePath = path.join(__dirname, '../scale-out.txt')
+  const filePath = path.join(__dirname, '../../scale-out.txt')
 
   fs.readFile(filePath, 'utf8', (err, data) => {
     if (err) {
       console.error('Error reading weight file:', err)
       return res.status(500).json({ error: 'Failed to read weight file' })
     }
-    console.log("got here too!");
     res.json({ weight: data.trim() })
   })
 })
