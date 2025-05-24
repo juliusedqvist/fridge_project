@@ -8,7 +8,7 @@
     </ul>
   </div>
   <div class="navbar2">
-    <li style="width: 70%;">{{ product }}</li>
+    <li style="width: 60%;">{{ product }}</li>
     <li><button @click="getWeight">scale</button></li>
     <li>{{ weight }}</li>
   </div>
@@ -34,7 +34,7 @@ const logs = ref('');
 const show = ref(false);
 const latestCode = ref('');
 const product = ref('Produktnamn');
-const weight = ref('')
+const weight = ref('Not weighted');
 
 async function getWeight() {
   try {
