@@ -24,7 +24,7 @@
   </TableComponent>
 
   <div class="form">
-    <input type="text" v-model="inputId" />
+    <input type="text" v-model="inputId" value="Id:" />
     <button @click="deleteProduct">Delete</button>
   </div>
 </template>
@@ -45,7 +45,7 @@ const headers = [
 ]
 
 const tableData = ref([])
-const inputId = ref('Id')
+const inputId = ref('')
 
 async function getContent() {
   try {
@@ -64,7 +64,7 @@ async function deleteProduct() {
   try {
     await axios.post('/api/delete_product', { id: inputId.value })
     await getContent()
-    inputId.value = 'Id'
+    inputId.value = ''
   } catch (error) {
     console.error(`Fel vid borttagning: ${error.message}`)
   }
