@@ -23,14 +23,17 @@
     </template>
   </table-component>
   <div class="form">
-    <input type="text" value="Id">
-    <button>Delete</button>
+    <input type="text" v-model="inputId" />
+    <button @click="deleteProduct(inputId.value)">Delete</button>
   </div>
 </template>
 
 <script>
 import TableComponent from '~/components/table.vue'
 import axios from 'axios'
+import { ref } from 'vue'
+
+const inputId = ref('Id')
 
 export default {
   components: {
@@ -66,6 +69,7 @@ export default {
       try {
         await axios.post('/api/delete_product', { id })
         await this.getContent()
+        inputId.value = "Id"
       } catch (error) {
         console.error(`Fel vid borttagning: ${error.message}`)
       }
