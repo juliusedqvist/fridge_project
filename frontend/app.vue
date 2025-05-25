@@ -68,8 +68,9 @@ body {
   }
 
   .content-inner {
-    padding: 0.75rem 1rem;
+    padding: 1rem 0.5rem;
     height: 100%;
+    box-sizing: border-box;
   }
 }
 </style>
