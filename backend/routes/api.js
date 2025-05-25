@@ -30,6 +30,7 @@ router.get('/get_products', (req, res) => {
   })
 })
 
+
 router.post('/delete_product', (req, res) => {
   const { id } = req.body;
 
@@ -39,19 +40,21 @@ router.post('/delete_product', (req, res) => {
 
   const deleteQuery = 'UPDATE products SET State = ? WHERE Food_Id = ?';
 
-  db.run(deleteQuery, ['unavailable', id], function(err) {
+  // Assuming you have a mysql2 connection pool or connection called `db`
+  db.query(deleteQuery, ['unavailable', id], (err, results) => {
     if (err) {
       console.error('Database error:', err.message);
       return res.status(500).json({ error: 'Database error' });
     }
 
-    if (this.changes === 0) {
+    if (results.affectedRows === 0) {
       return res.status(404).json({ error: 'Product not found or already unavailable' });
     }
 
     return res.json({ message: 'Product marked as unavailable', id });
   });
 });
+
 
 router.post('/add_product', (req, res) => {
   console.log(req.body)
