@@ -18,7 +18,7 @@ router.get('/weight', (req, res) => {
 })
 
 router.get('/get_products', (req, res) => {
-  const query = 'SELECT * FROM Food_Item'
+  const query = 'SELECT * FROM Food_Item WHERE state="available"'
 
   db.query(query, (err, results) => {
     if (err) {
