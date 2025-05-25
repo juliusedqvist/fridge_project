@@ -16,7 +16,6 @@
     </div>
     <div class="navbar2">
       <li class="nav2-element" style="flex-grow: 4">{{ product }}</li>
-
       <li class="nav2-element" style="flex-grow: 1">{{ weight }}</li>
     </div>
     <p class="show-button" @click="addToDatabase">Add to database</p>
@@ -163,7 +162,7 @@ onBeforeUnmount(() => {
 .content-wrapper {
   max-width: 900px;
   margin: 0 auto;
-  padding: 1rem 1rem;
+  padding: 1rem;
   box-sizing: border-box;
   overflow-x: hidden;
   min-height: 100vh;
@@ -175,15 +174,16 @@ onBeforeUnmount(() => {
 .navbar {
   display: flex;
   list-style: none;
-  padding: 0 0 12px 0;
+  padding: 0 0 16px 0;
   margin: 0;
   border-bottom: ridge 1px;
+  height: 70px;
 }
 
 .navbar2 {
   display: flex;
   list-style: none;
-  padding: 12px 0 12px 0;
+  padding: 12px 0;
   margin: 0;
 }
 
@@ -191,11 +191,11 @@ onBeforeUnmount(() => {
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  height: 40px;
   padding: 0 1rem;
   flex-grow: 1;
   min-width: 0;
   overflow-wrap: break-word;
+  height: 100%;
 }
 
 .nav2-element {
@@ -208,7 +208,6 @@ onBeforeUnmount(() => {
   min-width: 0;
   overflow-wrap: break-word;
 }
-
 
 /* Style for the "Show"/"Hide" button to match .whole-button */
 .show-button {
@@ -247,8 +246,8 @@ onBeforeUnmount(() => {
   font-family: Arial, sans-serif;
   font-size: 14px;
   padding: 8px 0;
-  width: 100px;
-  height: 70px;
+  width: 100%;
+  height: 50px;
   box-sizing: border-box;
   text-align: center;
   transition: background-color 0.2s ease;
@@ -263,7 +262,6 @@ onBeforeUnmount(() => {
   top: 1px;
   position: relative;
 }
-
 
 .scanner-section {
   display: flex;
