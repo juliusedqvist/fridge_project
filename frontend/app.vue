@@ -68,7 +68,7 @@ body {
   }
 
   .content-inner {
-    padding: 10rem 0.5rem;
+    padding: 1rem 0.5rem;
     height: 100%;
     box-sizing: border-box;
   }
