@@ -49,6 +49,18 @@ body {
   /* Removed padding from here */
 }
 
+.content-wrapper2 {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 1rem;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
 .content-inner {
   padding: 1rem 0.5rem;
   height: 100%;
