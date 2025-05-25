@@ -22,6 +22,8 @@
       {{ entity.State }}
     </template>
   </table-component>
+  <input type="text" value="Id">
+  <button>Delete</button>
 </template>
 
 <script>
@@ -56,6 +58,14 @@ export default {
         this.tableData = response.data
       } catch (error) {
         console.error(`Fel vid API-förfrågan: ${error.message}`)
+      }
+    },
+    async deleteProduct(id) {
+      try {
+        await axios.post('/api/delete_product', { id })
+        await this.getContent()
+      } catch (error) {
+        console.error(`Fel vid borttagning: ${error.message}`)
       }
     },
   },
