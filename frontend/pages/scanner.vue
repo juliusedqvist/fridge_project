@@ -7,20 +7,19 @@
           Latest scanned code: {{ latestCode }}
         </li>
         <li class="nav-element" style="flex-grow: 1">
-          <button @click="findProduct(latestCode)">Get product</button>
+          <button class="small-button" @click="findProduct(latestCode)">Get product</button>
         </li>
       </ul>
     </div>
     <div class="navbar2">
       <li class="nav2-element" style="flex-grow: 4">{{ product }}</li>
       <li class="nav2-element" style="flex-grow: 1">
-        <button @click="getWeight">scale</button>
+        <button class="small-button" @click="getWeight">scale</button>
       </li>
       <li class="nav2-element" style="flex-grow: 1">{{ weight }}</li>
     </div>
-    <p class="whole-button" @click="addToDatabase">Add to database</p>
-    <button @click="startButton">{{ show ? 'Hide' : 'Show' }}</button>
-
+    <p class="show-button" @click="addToDatabase">Add to database</p>
+    <button class="show-button" @click="startButton">{{ show ? 'Hide' : 'Show' }}</button>
     <div v-if="show" class="scanner-section">
       <div class="scanner-container" ref="scannerContainer"></div>
       <p>{{ resultText }}</p>
@@ -209,33 +208,60 @@ onBeforeUnmount(() => {
   overflow-wrap: break-word;
 }
 
-.whole-button {
+
+/* Style for the "Show"/"Hide" button to match .whole-button */
+.show-button {
   background-color: #222;
   border-radius: 6px;
   border: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   cursor: pointer;
   color: #fff;
   font-family: Arial, sans-serif;
   font-size: 18px;
   padding: 16px;
-  text-decoration: none;
   width: 100%;
   box-sizing: border-box;
-  word-wrap: break-word;
+  text-align: center;
   margin-bottom: 1rem;
+  transition: background-color 0.2s ease;
 }
 
-.whole-button:hover {
+.show-button:hover {
   background-color: #333;
 }
 
-.whole-button:active {
+.show-button:active {
   background-color: #444;
   top: 1px;
+  position: relative;
 }
+
+/* Shared style for small buttons "Get product" and "scale" */
+.small-button {
+  background-color: #222;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  color: #fff;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  padding: 8px 0;
+  width: 70px;
+  box-sizing: border-box;
+  text-align: center;
+  transition: background-color 0.2s ease;
+}
+
+.small-button:hover {
+  background-color: #333;
+}
+
+.small-button:active {
+  background-color: #444;
+  top: 1px;
+  position: relative;
+}
+
 
 .scanner-section {
   display: flex;
