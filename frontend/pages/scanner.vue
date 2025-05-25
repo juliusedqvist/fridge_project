@@ -298,7 +298,7 @@ onBeforeUnmount(() => {
     max-width: 100%;
   }
 
-  .show-button {
+  .small-button {
     width: 160px;
   }
 }
