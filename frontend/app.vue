@@ -1,7 +1,9 @@
 <template>
   <div class="layout-container">
     <div class="content-wrapper">
-      <NuxtPage />
+      <div class="content-inner">
+        <NuxtPage />
+      </div>
     </div>
   </div>
 </template>
@@ -37,12 +39,17 @@ body {
   width: 100%;
   max-width: 900px;
   height: 100%;
-  /* <-- Forces full stretch */
+  /* Shadow and border-radius here */
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
   border-radius: 12px;
   overflow-y: auto;
+  box-sizing: border-box;
+  /* Removed padding from here */
+}
+
+.content-inner {
   padding: 1rem 0.5rem;
-  /* <-- Reduced padding */
+  height: 100%;
   box-sizing: border-box;
 }
 
@@ -55,10 +62,14 @@ body {
   .content-wrapper {
     max-width: 100%;
     border-radius: 6px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+    height: 100%;
+    /* no padding here */
+  }
+
+  .content-inner {
     padding: 0.75rem 1rem;
     height: 100%;
-    /* Keep full height on mobile */
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
   }
 }
 </style>
