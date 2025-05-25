@@ -24,7 +24,7 @@
   </TableComponent>
 
   <div class="form">
-    <input type="text" v-model="inputId" value="Id:" />
+    <input type="text" v-model="inputId" />
     <button @click="deleteProduct">Delete</button>
   </div>
 </template>
