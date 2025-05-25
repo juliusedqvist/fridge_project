@@ -65,8 +65,7 @@ body {
     box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
     height: 100%;
     /* no padding here */
-    padding: 5px;
-    padding-top: 10px;
+    padding-left: 50px;
   }
 
   .content-inner {
