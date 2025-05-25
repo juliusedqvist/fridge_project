@@ -163,7 +163,7 @@ onBeforeUnmount(() => {
 .content-wrapper {
   max-width: 900px;
   margin: 0 auto;
-  padding: 0 1rem;
+  padding: 1rem 1rem;
   box-sizing: border-box;
   overflow-x: hidden;
   min-height: 100vh;
