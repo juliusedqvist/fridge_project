@@ -221,4 +221,55 @@ onBeforeUnmount(() => {
   font-family: Arial, sans-serif;
   font-size: 18px;
   padding: 16px;
-  text
+  text-decoration: none;
+  width: 100%;
+  box-sizing: border-box;
+  word-wrap: break-word;
+  margin-bottom: 1rem;
+}
+
+.whole-button:hover {
+  background-color: #333;
+}
+
+.whole-button:active {
+  background-color: #444;
+  top: 1px;
+}
+
+.scanner-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.scanner-container {
+  width: 100%;
+  max-width: 400px;
+  height: 250px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.log-area {
+  background: #f0f0f0;
+  padding: 1em;
+  height: 150px;
+  overflow-y: auto;
+  white-space: pre-wrap;
+  width: 100%;
+  max-width: 600px;
+}
+
+@media (max-width: 600px) {
+  .scanner-container {
+    height: 200px;
+    max-width: 100%;
+  }
+}
+</style>
