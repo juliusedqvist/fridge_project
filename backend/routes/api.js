@@ -38,7 +38,7 @@ router.post('/delete_product', (req, res) => {
     return res.status(400).json({ error: 'Missing required fields' });
   }
 
-  const deleteQuery = 'UPDATE products SET State = ? WHERE Food_Id = ?';
+  const deleteQuery = 'UPDATE Food_Item SET State = ? WHERE Food_Id = ?';
 
   // Assuming you have a mysql2 connection pool or connection called `db`
   db.query(deleteQuery, ['unavailable', id], (err, results) => {
