@@ -294,7 +294,7 @@ onBeforeUnmount(() => {
 
 @media (max-width: 600px) {
   .scanner-container {
-    height: 200px;
+    height: 400px;
     max-width: 100%;
   }
 }
