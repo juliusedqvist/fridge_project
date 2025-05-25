@@ -1,25 +1,27 @@
 <template>
   <div class="table-wrapper">
     <table class="present-data">
-      <tr>
-        <th v-for="(header, i) in headers" :key="`${header}${i}`" class="header-item">
-          {{ header }}
-        </th>
-      </tr>
-      <tr v-for="entity in data" :key="`entity-${entity.name}`" class="table-rows">
-        <td v-for="(header, i) in headers" :key="`${header}-${i}`">
-          <slot :name="`column${i}`" :entity="entity"></slot>
-        </td>
-      </tr>
+      <thead>
+        <tr>
+          <th v-for="(header, i) in headers" :key="`header-${i}`" class="header-item">
+            {{ header }}
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="entity in data" :key="`entity-${entity.name}`" class="table-rows">
+          <td v-for="(header, i) in headers" :key="`cell-${entity.name}-${i}`">
+            <slot :name="`column${i}`" :entity="entity" />
+          </td>
+        </tr>
+      </tbody>
     </table>
   </div>
 </template>
 
 <script>
-import Vue from 'vue'
-
-export default Vue.extend({
-  name: 'Table',
+export default {
+  name: 'TableComponent',
   props: {
     headers: {
       type: Array,
@@ -30,5 +32,5 @@ export default Vue.extend({
       required: true,
     },
   },
-})
+}
 </script>
