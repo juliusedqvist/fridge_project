@@ -156,18 +156,6 @@ onBeforeUnmount(() => {
 </script>
 
 <style scoped>
-.content-wrapper {
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 1rem;
-  box-sizing: border-box;
-  overflow-x: hidden;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-}
-
 .navbar {
   display: flex;
   list-style: none;

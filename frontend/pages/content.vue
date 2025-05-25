@@ -1,5 +1,5 @@
 <template>
-  <table-component :headers="headers" :data="tableData">
+  <TableComponent :headers="headers" :data="tableData">
     <template #column0="{ entity }">
       {{ entity.Food_Id }}
     </template>
@@ -21,59 +21,56 @@
     <template #column6="{ entity }">
       {{ entity.State }}
     </template>
-  </table-component>
+  </TableComponent>
+
   <div class="form">
     <input type="text" v-model="inputId" />
-    <button @click="deleteProduct(inputId.value)">Delete</button>
+    <button @click="deleteProduct">Delete</button>
   </div>
 </template>
 
-<script>
-import TableComponent from '~/components/table.vue'
+<script setup>
+import { ref, onMounted } from 'vue'
 import axios from 'axios'
-import { ref } from 'vue'
+import TableComponent from '~/components/table.vue'
 
+const headers = [
+  'Food_Id',
+  'Name',
+  'Weight (g)',
+  'Kcal per 100g',
+  'Protein per 100g',
+  'Expiration Date',
+  'State',
+]
+
+const tableData = ref([])
 const inputId = ref('Id')
 
-export default {
-  components: {
-    TableComponent,
-  },
-  data() {
-    return {
-      headers: [
-        'Food_Id',
-        'Name',
-        'Weight (g)',
-        'Kcal per 100g',
-        'Protein per 100g',
-        'Expiration Date',
-        'State',
-      ],
-      tableData: [],
-    }
-  },
-  mounted() {
-    this.getContent()
-  },
-  methods: {
-    async getContent() {
-      try {
-        const response = await axios.get('/api/get_products')
-        this.tableData = response.data
-      } catch (error) {
-        console.error(`Fel vid API-förfrågan: ${error.message}`)
-      }
-    },
-    async deleteProduct(id) {
-      try {
-        await axios.post('/api/delete_product', { id })
-        await this.getContent()
-        inputId.value = "Id"
-      } catch (error) {
-        console.error(`Fel vid borttagning: ${error.message}`)
-      }
-    },
-  },
+async function getContent() {
+  try {
+    const response = await axios.get('/api/get_products')
+    tableData.value = response.data
+  } catch (error) {
+    console.error(`Fel vid API-förfrågan: ${error.message}`)
+  }
 }
+
+async function deleteProduct() {
+  if (!inputId.value || inputId.value === 'Id') {
+    alert('Please enter a valid Id')
+    return
+  }
+  try {
+    await axios.post('/api/delete_product', { id: inputId.value })
+    await getContent()
+    inputId.value = 'Id'
+  } catch (error) {
+    console.error(`Fel vid borttagning: ${error.message}`)
+  }
+}
+
+onMounted(() => {
+  getContent()
+})
 </script>
