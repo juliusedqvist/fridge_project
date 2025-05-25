@@ -299,7 +299,7 @@ onBeforeUnmount(() => {
   }
 
   .small-button {
-    width: 160px;
+    width: 180px;
   }
 }
 </style>
