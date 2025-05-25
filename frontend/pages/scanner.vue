@@ -276,7 +276,7 @@ onBeforeUnmount(() => {
 .scanner-container {
   width: 100%;
   max-width: 400px;
-  height: 250px;
+  height: 400;
   border: 1px solid #ccc;
   box-sizing: border-box;
   overflow: hidden;
