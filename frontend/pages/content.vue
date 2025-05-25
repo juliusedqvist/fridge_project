@@ -1,24 +1,24 @@
 <template>
   <table-component :headers="headers" :data="tableData">
-    <template #column1="{ entity }">
+    <template #column0="{ entity }">
       {{ entity.Food_Id }}
     </template>
-    <template #column2="{ entity }">
+    <template #column1="{ entity }">
       {{ entity.Name }}
     </template>
-    <template #column3="{ entity }">
+    <template #column2="{ entity }">
       {{ entity.Weight }} g
     </template>
-    <template #column4="{ entity }">
+    <template #column3="{ entity }">
       {{ entity.KcalPer100g }} kcal/100g
     </template>
-    <template #column5="{ entity }">
+    <template #column4="{ entity }">
       {{ entity.ProteinPer100g }} g
     </template>
-    <template #column6="{ entity }">
+    <template #column5="{ entity }">
       {{ new Date(entity.Exp_Date).toLocaleDateString() }}
     </template>
-    <template #column7="{ entity }">
+    <template #column6="{ entity }">
       {{ entity.State }}
     </template>
   </table-component>
