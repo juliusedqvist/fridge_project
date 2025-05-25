@@ -9,13 +9,14 @@
         <li class="nav-element" style="flex-grow: 1">
           <button class="small-button" @click="findProduct(latestCode)">Get product</button>
         </li>
+        <li class="nav-element" style="flex-grow: 1">
+          <button class="small-button" @click="getWeight">scale</button>
+        </li>
       </ul>
     </div>
     <div class="navbar2">
       <li class="nav2-element" style="flex-grow: 4">{{ product }}</li>
-      <li class="nav2-element" style="flex-grow: 1">
-        <button class="small-button" @click="getWeight">scale</button>
-      </li>
+
       <li class="nav2-element" style="flex-grow: 1">{{ weight }}</li>
     </div>
     <p class="show-button" @click="addToDatabase">Add to database</p>
