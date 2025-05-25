@@ -16,7 +16,7 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import TableComponent from '~/components/Table.vue'
+import TableComponent from '~/components/table.vue'
 
 export default Vue.extend({
   components: {
