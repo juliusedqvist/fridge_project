@@ -1,23 +1,29 @@
 <template>
-  <table-component :headers="headers" :data="data">
+  <table-component :headers="headers" :data="tableData">
     <template #column0="{ entity }">
-      {{ entity.name }}
+      {{ entity.Name }}
     </template>
     <template #column1="{ entity }">
-      {{ entity.age }}
+      {{ entity.Weight }} g
     </template>
     <template #column2="{ entity }">
-      <ul>
-        <li v-for="(hobbie, i) in entity.hobbies" :key="`${hobbie}-${i}`">
-          {{ hobbie }}
-        </li>
-      </ul>
+      {{ entity.KcalPer100g }} kcal/100g
+    </template>
+    <template #column3="{ entity }">
+      {{ entity.ProteinPer100g }} g
+    </template>
+    <template #column4="{ entity }">
+      {{ new Date(entity.Exp_Date).toLocaleDateString() }}
+    </template>
+    <template #column5="{ entity }">
+      {{ entity.State }}
     </template>
   </table-component>
 </template>
 
 <script>
 import TableComponent from '~/components/table.vue'
+import axios from 'axios'
 
 export default {
   components: {
@@ -25,25 +31,29 @@ export default {
   },
   data() {
     return {
-      headers: ['Name', 'Age', 'Favourite Hobbies'],
-      data: [
-        {
-          name: 'James',
-          age: 21,
-          hobbies: ['tennis', 'coding'],
-        },
-        {
-          name: 'Carol',
-          age: 22,
-          hobbies: ['gaming', 'reading', 'debating'],
-        },
-        {
-          name: 'Sam',
-          age: 25,
-          hobbies: ['brunching', 'going to the gym', 'painting'],
-        },
+      headers: [
+        'Name',
+        'Weight (g)',
+        'Kcal per 100g',
+        'Protein per 100g',
+        'Expiration Date',
+        'State',
       ],
+      tableData: [],
     }
+  },
+  mounted() {
+    this.getContent()
+  },
+  methods: {
+    async getContent() {
+      try {
+        const response = await axios.get('/api/get_products')
+        this.tableData = response.data
+      } catch (error) {
+        console.error(`Fel vid API-förfrågan: ${error.message}`)
+      }
+    },
   },
 }
 </script>
