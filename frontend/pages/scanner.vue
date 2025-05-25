@@ -20,7 +20,8 @@
     </div>
     <p class="whole-button" @click="addToDatabase">Add to database</p>
     <button @click="startButton">{{ show ? 'Hide' : 'Show' }}</button>
-    <div v-if="show">
+
+    <div v-if="show" class="scanner-section">
       <div class="scanner-container" ref="scannerContainer"></div>
       <p>{{ resultText }}</p>
       <h2>Loggar</h2>
@@ -37,7 +38,6 @@ import axios from 'axios'
 const scannerContainer = ref(null)
 const resultText = ref('Ingen streckkod scannad ännu')
 const logs = ref('')
-
 const show = ref(false)
 const latestCode = ref('')
 const product = ref('Produktnamn')
@@ -45,18 +45,17 @@ const productFields = ref('')
 const weight = ref('N/A')
 
 async function addToDatabase() {
-  console.log(productFields.value)
   if (
     productFields.value.exp_date === 0 ||
     productFields.value.exp_date === '0'
   ) {
     const oneWeekLater = new Date()
     oneWeekLater.setDate(oneWeekLater.getDate() + 7)
-    productFields.value.exp_date = oneWeekLater.toISOString().split('T')[0] // format: YYYY-MM-DD
+    productFields.value.exp_date = oneWeekLater.toISOString().split('T')[0]
   }
-  console.log(productFields.value)
-  const res = await axios.post('/api/add_product', productFields.value)
-  product.value = "";
+
+  await axios.post('/api/add_product', productFields.value)
+  product.value = ''
 }
 
 async function getWeight() {
@@ -96,7 +95,6 @@ async function findProduct(code) {
         `Produkt hittad: ${productData.product.product_name || 'Namn saknas'}`
       )
       product.value = `${productData.product.brands}: ${productData.product.product_name}`
-      console.log(productData)
 
       productFields.value = {
         name: productData.product.product_name,
@@ -168,6 +166,10 @@ onBeforeUnmount(() => {
   padding: 0 1rem;
   box-sizing: border-box;
   overflow-x: hidden;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 }
 
 .navbar {
@@ -218,36 +220,5 @@ onBeforeUnmount(() => {
   color: #fff;
   font-family: Arial, sans-serif;
   font-size: 18px;
-  padding: 20px;
-  text-decoration: none;
-  width: 100%;
-  box-sizing: border-box;
-  word-wrap: break-word;
-  margin-bottom: 1rem;
-}
-
-.whole-button:hover {
-  background-color: #333;
-}
-
-.whole-button:active {
-  background-color: #444;
-  top: 1px;
-}
-
-.scanner-container {
-  width: 100%;
-  max-width: 300px;
-  height: 300px;
-  border: 1px solid #ccc;
-  margin-bottom: 0.5rem;
-}
-
-.log-area {
-  background: #f0f0f0;
-  padding: 1em;
-  height: 150px;
-  overflow-y: auto;
-  white-space: pre-wrap;
-}
-</style>
+  padding: 16px;
+  text
