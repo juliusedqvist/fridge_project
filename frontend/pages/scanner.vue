@@ -3,7 +3,7 @@
     <div></div>
     <div>
       <ul class="navbar">
-        <li class="nav-element" style="flex-grow: 4">
+        <li class="nav-element" style="flex-grow: 5">
           Latest scanned code: {{ latestCode }}
         </li>
         <li class="nav-element" style="flex-grow: 1">
