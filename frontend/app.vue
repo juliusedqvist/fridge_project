@@ -2,7 +2,9 @@
   <div class="layout-container">
     <div class="content-wrapper">
       <div class="content-inner">
-        <NuxtPage />
+        <div class="content-wrapper2">
+          <NuxtPage />
+        </div>
       </div>
     </div>
   </div>

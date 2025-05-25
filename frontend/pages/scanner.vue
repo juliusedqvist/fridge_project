@@ -1,31 +1,28 @@
 <template>
-  <div class="content-wrapper">
-    <div></div>
-    <div>
-      <ul class="navbar">
-        <li class="nav-element" style="flex-grow: 7">
-          Latest scanned code: {{ latestCode }}
-        </li>
-        <li class="nav-element" style="flex-grow: 1">
-          <button class="small-button" @click="findProduct(latestCode)">Get product</button>
-        </li>
-        <li class="nav-element" style="flex-grow: 1">
-          <button class="small-button" @click="getWeight">scale</button>
-        </li>
-      </ul>
-    </div>
-    <div class="navbar2">
-      <li class="nav2-element" style="flex-grow: 4">{{ product }}</li>
-      <li class="nav2-element" style="flex-grow: 1">{{ weight }}</li>
-    </div>
-    <p class="show-button" @click="addToDatabase">Add to database</p>
-    <button class="show-button" @click="startButton">{{ show ? 'Hide' : 'Show' }}</button>
-    <div v-if="show" class="scanner-section">
-      <div class="scanner-container" ref="scannerContainer"></div>
-      <p>{{ resultText }}</p>
-      <h2>Loggar</h2>
-      <pre class="log-area">{{ logs }}</pre>
-    </div>
+  <div>
+    <ul class="navbar">
+      <li class="nav-element" style="flex-grow: 7">
+        Latest scanned code: {{ latestCode }}
+      </li>
+      <li class="nav-element" style="flex-grow: 1">
+        <button class="small-button" @click="findProduct(latestCode)">Get product</button>
+      </li>
+      <li class="nav-element" style="flex-grow: 1">
+        <button class="small-button" @click="getWeight">scale</button>
+      </li>
+    </ul>
+  </div>
+  <div class="navbar2">
+    <li class="nav2-element" style="flex-grow: 4">{{ product }}</li>
+    <li class="nav2-element" style="flex-grow: 1">{{ weight }}</li>
+  </div>
+  <p class="show-button" @click="addToDatabase">Add to database</p>
+  <button class="show-button" @click="startButton">{{ show ? 'Hide' : 'Show' }}</button>
+  <div v-if="show" class="scanner-section">
+    <div class="scanner-container" ref="scannerContainer"></div>
+    <p>{{ resultText }}</p>
+    <h2>Loggar</h2>
+    <pre class="log-area">{{ logs }}</pre>
   </div>
 </template>
 
