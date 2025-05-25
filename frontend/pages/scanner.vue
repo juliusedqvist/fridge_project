@@ -246,7 +246,7 @@ onBeforeUnmount(() => {
   font-family: Arial, sans-serif;
   font-size: 14px;
   padding: 8px 0;
-  width: 100px;
+  width: 140px;
   height: 50px;
   box-sizing: border-box;
   text-align: center;
