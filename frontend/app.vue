@@ -66,6 +66,7 @@ body {
     height: 100%;
     /* no padding here */
     padding: 5px;
+    padding-top: 10px;
   }
 
   .content-inner {
