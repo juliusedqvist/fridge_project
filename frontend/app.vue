@@ -28,7 +28,7 @@ body {
   justify-content: center;
   align-items: stretch;
   /* Ensures content stretches full height */
-  padding: 2rem;
+  padding: 1rem;
   box-sizing: border-box;
 }
 
