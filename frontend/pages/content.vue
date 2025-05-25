@@ -22,8 +22,10 @@
       {{ entity.State }}
     </template>
   </table-component>
-  <input type="text" value="Id">
-  <button>Delete</button>
+  <div class="form">
+    <input type="text" value="Id">
+    <button>Delete</button>
+  </div>
 </template>
 
 <script>
