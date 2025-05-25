@@ -26,10 +26,9 @@ body {
 
   display: flex;
   justify-content: center;
-  align-items: center;
-  /* center vertically too */
+  align-items: stretch;
+  /* Ensures content stretches full height */
   padding: 2rem;
-  /* background visible on desktop */
   box-sizing: border-box;
 }
 
@@ -37,28 +36,29 @@ body {
   background: white;
   width: 100%;
   max-width: 900px;
+  height: 100%;
+  /* <-- Forces full stretch */
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
   border-radius: 12px;
   overflow-y: auto;
-  padding: 2rem;
+  padding: 1rem 1.5rem;
+  /* <-- Reduced padding */
   box-sizing: border-box;
-  min-height: 100%;
 }
 
 /* Mobile styles */
 @media (max-width: 768px) {
   .layout-container {
     padding: 0.5rem;
-    /* less background visible on mobile */
   }
 
   .content-wrapper {
     max-width: 100%;
     border-radius: 6px;
-    padding: 1rem;
+    padding: 0.75rem 1rem;
+    height: 100%;
+    /* Keep full height on mobile */
     box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
-    min-height: 100vh;
-    /* ensure full height on mobile too */
   }
 }
 </style>
