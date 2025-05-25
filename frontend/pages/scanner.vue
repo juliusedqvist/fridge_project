@@ -297,5 +297,9 @@ onBeforeUnmount(() => {
     height: 400px;
     max-width: 100%;
   }
+
+  .show-button {
+    width: 160px;
+  }
 }
 </style>
