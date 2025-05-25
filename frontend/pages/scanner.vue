@@ -162,7 +162,7 @@ onBeforeUnmount(() => {
 .content-wrapper {
   max-width: 900px;
   margin: 0 auto;
-  padding: 1rem 1rem;
+  padding: 1rem;
   box-sizing: border-box;
   overflow-x: hidden;
   min-height: 100vh;
@@ -178,8 +178,6 @@ onBeforeUnmount(() => {
   margin: 0;
   border-bottom: ridge 1px;
   height: 70px;
-  gap: 8px;
-  flex-wrap: wrap;
 }
 
 .navbar2 {
@@ -193,7 +191,7 @@ onBeforeUnmount(() => {
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  padding: 0 0.5rem;
+  padding: 0 1rem;
   flex-grow: 1;
   min-width: 0;
   overflow-wrap: break-word;
@@ -211,7 +209,7 @@ onBeforeUnmount(() => {
   overflow-wrap: break-word;
 }
 
-/* Style for the "Show"/"Hide" and "Add to database" buttons */
+/* Style for the "Show"/"Hide" button to match .whole-button */
 .show-button {
   background-color: #222;
   border-radius: 6px;
@@ -248,8 +246,8 @@ onBeforeUnmount(() => {
   font-family: Arial, sans-serif;
   font-size: 14px;
   padding: 8px 0;
-  height: 50px;
   width: 100%;
+  height: 50px;
   box-sizing: border-box;
   text-align: center;
   transition: background-color 0.2s ease;
@@ -294,26 +292,9 @@ onBeforeUnmount(() => {
   max-width: 600px;
 }
 
-/* Responsive adjustments */
 @media (max-width: 600px) {
-  .navbar {
-    flex-direction: column;
-    gap: 6px;
-    height: auto;
-  }
-
-  .nav-element {
-    width: 100%;
-    padding: 0;
-  }
-
-  .small-button {
-    font-size: 16px;
-    height: 48px;
-  }
-
   .scanner-container {
-    height: 300px;
+    height: 400px;
     max-width: 100%;
   }
 }
