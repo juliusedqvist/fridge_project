@@ -41,7 +41,7 @@ body {
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
   border-radius: 12px;
   overflow-y: auto;
-  /* padding: 1rem 1.5rem; */
+  padding: 1rem 1rem;
   /* <-- Reduced padding */
   box-sizing: border-box;
 }
