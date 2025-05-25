@@ -176,6 +176,7 @@ onBeforeUnmount(() => {
   display: flex;
   list-style: none;
   padding: 0 0 12px 0;
+  height: 120px;
   margin: 0;
   border-bottom: ridge 1px;
 }
